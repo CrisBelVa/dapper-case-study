@@ -4,11 +4,14 @@ import streamlit as st
 import pandas as pd
 import altair as alt
 
-from app import card_start, card_end, kpi_chip, inject_google_css
+import os, sys
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
+from ui import card_start, card_end, kpi_chip, inject_google_css
 
-
-st.set_page_config(page_title="Part 2 – Paid Marketing Strategy", layout="wide")
+# DO NOT call st.set_page_config() in pages
+import streamlit as st
+inject_google_css()
 st.title("Part 2 – Paid Marketing Strategy (Behavior Change Launch)")
 
 # -----------------------------
