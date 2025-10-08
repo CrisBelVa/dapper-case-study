@@ -6,8 +6,6 @@ from math import floor
 
 from app import card_start, card_end, kpi_chip, inject_google_css
 
-# after st.set_page_config(...)
-inject_google_css()
 
 
 st.set_page_config(page_title="Part 4 – Performance Review", layout="wide")
