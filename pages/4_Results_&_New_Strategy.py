@@ -8,7 +8,7 @@ sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 import streamlit as st
 st.set_page_config(page_title="Part X – <Page Name>", layout="wide")  # or "centered" where you want
 
-from ui import card_start, card_end, kpi_chip, inject_google_css
+from app import card_start, card_end, kpi_chip, inject_google_css
 
 
 st.title("Part 4 – Performance Review (Simulated)")
