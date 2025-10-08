@@ -10,9 +10,7 @@ st.set_page_config(page_title="Part X – <Page Name>", layout="wide")  # or "ce
 
 from ui import card_start, card_end, kpi_chip, inject_google_css
 
-# DO NOT call st.set_page_config() in pages
-import streamlit as st
-inject_google_css()
+
 
 
 st.title("Part 1 – Research & Prep (Behavior Change Focus)")
