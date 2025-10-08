@@ -3,8 +3,7 @@ import pandas as pd
 import altair as alt
 from app import card_start, card_end, kpi_chip, inject_google_css
 
-# after st.set_page_config(...)
-inject_google_css()
+
 
 
 st.title("Part 3 – Prevention & Execution")
