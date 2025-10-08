@@ -1,28 +1,129 @@
 import streamlit as st
 
-st.set_page_config(page_title="Dapper Case Study – &ranj US Go-To-Market", layout="centered")
-inject_google_css()
+# -----------------------------
+# ✅ Page Config (only here)
+# -----------------------------
+st.set_page_config(
+    page_title="Dapper Case Study – &ranj US Go-To-Market",
+    layout="centered"
+)
 
+# -----------------------------
+# ✅ Global CSS (Google / Material feel)
+# -----------------------------
+GOOGLE_MATERIAL_CSS = """
+<style>
+:root {
+  --g-primary: #1A73E8;
+  --g-green:   #34A853;
+  --g-yellow:  #FBBC05;
+  --g-red:     #EA4335;
+  --g-text:    #202124;
+  --g-muted:   #5F6368;
+  --g-bg:      #FFFFFF;
+  --g-bg2:     #F8F9FA;
+  --g-border:  #E0E0E0;
+  --g-shadow:  0 1px 2px rgba(0,0,0,0.06), 0 2px 6px rgba(0,0,0,0.06);
+  --radius:    12px;
+  --pad:       16px;
+}
+
+.block-container { padding-top: 1.2rem; }
+h1,h2,h3 { color: var(--g-text); letter-spacing: -0.2px; }
+
+.g-card {
+  background: var(--g-bg);
+  border: 1px solid var(--g-border);
+  border-radius: var(--radius);
+  padding: var(--pad);
+  box-shadow: var(--g-shadow);
+  margin-bottom: 12px;
+}
+
+.kpi {
+  display: inline-flex; 
+  align-items: center; 
+  gap: 8px;
+  padding: 10px 14px; 
+  border-radius: 999px;
+  border: 1px solid var(--g-border); 
+  background: var(--g-bg);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  font-weight: 600; 
+  color: var(--g-text);
+}
+.kpi .dot { 
+  width: 10px; 
+  height: 10px; 
+  border-radius: 50%; 
+  background: var(--g-primary); 
+}
+
+.stTabs [data-baseweb="tab-list"] { gap: 8px; }
+.stTabs [data-baseweb="tab"] {
+  background: var(--g-bg);
+  border: 1px solid var(--g-border);
+  border-radius: 999px;
+  padding: 8px 14px;
+  color: var(--g-muted);
+}
+.stTabs [aria-selected="true"] {
+  border-color: var(--g-primary) !important;
+  color: var(--g-primary) !important;
+}
+
+.stButton > button {
+  border-radius: 8px !important;
+  border: 1px solid var(--g-border) !important;
+  box-shadow: var(--g-shadow) !important;
+}
+
+.stAlert { border-radius: var(--radius); }
+</style>
+"""
+
+def inject_google_css():
+    st.markdown(GOOGLE_MATERIAL_CSS, unsafe_allow_html=True)
+
+# -----------------------------
+# ✅ Reusable UI helpers
+# -----------------------------
+def card_start(title: str, subtitle: str | None = None):
+    st.markdown(
+        f'<div class="g-card"><h3>{title}</h3>'
+        + (f'<p style="color:#5F6368;margin-top:-6px;">{subtitle}</p>' if subtitle else ''),
+        unsafe_allow_html=True,
+    )
+
+def card_end():
+    st.markdown("</div>", unsafe_allow_html=True)
+
+def kpi_chip(label: str, value: str, tone: str = "primary"):
+    color = {
+        "primary": "var(--g-primary)",
+        "green":   "var(--g-green)",
+        "red":     "var(--g-red)",
+        "yellow":  "var(--g-yellow)",
+    }.get(tone, "var(--g-primary)")
+    st.markdown(
+        f'<span class="kpi"><span class="dot" style="background:{color};"></span>{label}: {value}</span>',
+        unsafe_allow_html=True,
+    )
+
+# -----------------------------
+# ✅ Intro / Home Section
+# -----------------------------
 st.title("🎯 Dapper Case Study – &ranj US Go-To-Market")
+
 st.markdown("""
-Welcome to the **interactive case study app** designed by **Cristhian Beltran** for &ranj’s expansion into the **US market**.  
-This walkthrough blends **market research, channel planning, ICP exploration, competitor benchmarking, and paid media strategy** into one structured flow.  
+Welcome to the **interactive case study app** designed by **Cristhian Beltran** for &ranj’s US expansion.
 
----
+This walkthrough combines:
+- ✅ Market research  
+- ✅ Channel planning  
+- ✅ ICP & competitor insights  
+- ✅ Paid strategy  
+- ✅ Execution & performance simulation  
 
-### 🚀 How to use this app
-- **Navigation:** Use the **left sidebar** to explore each section step by step.  
-- **Part 1 – Research & Prep:** Market size, spend signals, channels, ICPs, competitors.  
-- **Part 2 – Paid Media Strategy:** Funnel-based budget allocation, campaign types, and content framework.  
-- **Part 3 – Prevention & Execution:** Bot mitigation plan and phased execution timeline.  
-- **Part 4 – Performance Review:** Simulated campaign results, insights, and optimizations.
-
----
-
-### 🎮 Why this matters
-&ranj designs **serious games that drive desired employee behaviors**.  
-This app frames the **US go-to-market strategy** with that positioning at the center:
-- **Awareness:** Serious games as a differentiator in a crowded training market.  
-- **Demand capture:** Targeting compliance, L&D, and operations leaders in high-spend verticals.  
-- **Execution:** Phased rollout with focus on measurable ROI and behavior change.
+💡 Navigate using the **left sidebar** to explore each part.
 """)
