@@ -6,11 +6,11 @@ import altair as alt
 # Reuse helpers from app.py (cards & KPI chips)
 from app import card_start, card_end, kpi_chip, inject_google_css
 
-# after st.set_page_config(...)
-inject_google_css()
+
 
 
 st.title("Part 1 – Research & Prep (Behavior Change Focus)")
+
 
 DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
 
