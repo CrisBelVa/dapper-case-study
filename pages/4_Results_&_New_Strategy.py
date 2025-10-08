@@ -3,12 +3,14 @@ import streamlit as st
 import pandas as pd
 import altair as alt
 from math import floor
+import os, sys
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
-from app import card_start, card_end, kpi_chip, inject_google_css
+from ui import card_start, card_end, kpi_chip, inject_google_css
 
-
-
-st.set_page_config(page_title="Part 4 – Performance Review", layout="wide")
+# DO NOT call st.set_page_config() in pages
+import streamlit as st
+inject_google_css()
 st.title("Part 4 – Performance Review (Simulated)")
 
 # -----------------------------
