@@ -9,9 +9,7 @@ import streamlit as st
 st.set_page_config(page_title="Part X – <Page Name>", layout="wide")  # or "centered" where you want
 from ui import card_start, card_end, kpi_chip, inject_google_css
 
-# DO NOT call st.set_page_config() in pages
-import streamlit as st
-inject_google_css()
+
 st.title("Part 2 – Paid Marketing Strategy (Behavior Change Launch)")
 
 # -----------------------------
